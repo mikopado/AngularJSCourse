@@ -32,6 +32,9 @@ AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
 
       boughtList.items = ShoppingListCheckOffService.getBoughtItems();
       
+      boughtList.isEmpty = function () {
+        return ShoppingListCheckOffService.checkIsEmpty();
+      };
 
 
 
@@ -86,6 +89,12 @@ AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
 
           return alreadyBoughtList;
 
+    };
+
+    service.checkIsEmpty = function () {
+      if(alreadyBoughtList.length === 0) {
+        return true;
+      }
     };
 
   };
